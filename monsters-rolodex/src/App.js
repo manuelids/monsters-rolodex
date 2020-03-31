@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component'
 import './App.css';
 
 class App extends Component {
@@ -19,6 +20,12 @@ class App extends Component {
       .then(users => this.setState({ monsters: users }));
   }
 
+  //Arrow functions will bind the context where the arrow function is declared automatically 
+  //This is called Flexible Scopping (ES6)
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  }
+
   render() {
     //Destructure mode for assigning copies of monsters and searchField
     const { monsters, searchField } = this.state;
@@ -31,11 +38,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* Search Bar */}
-        <input 
-          type="search" 
-          placeholder="Search monsters" 
-          onChange={e => this.setState({ searchField: e.target.value })}
+        <h1>Monsters Rolodex</h1>
+        
+        {/* Search Box Component */}
+        <SearchBox 
+          placeholder="Search monsters"
+          handleChange={this.handleChange}
         />
 
         {/* CardList Component */}

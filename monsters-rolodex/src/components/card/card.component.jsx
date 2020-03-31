@@ -1,6 +1,7 @@
 import React from 'react';
 import './card.styles.css'
 
+//Exportable Card component
 export const Card = (props) => (
     //for a string format equivalent this symbol is required `
     //className for the css class attribute html equivalent
